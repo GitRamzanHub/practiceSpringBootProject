@@ -23,6 +23,11 @@ public class EmployeeRegisterController {
 		return "addUser";
 	}
 	
+	@GetMapping("/test")
+	public String test() {
+		return "";
+	}
+	
 	
 	@PostMapping("/addEmployee")
 	@ResponseBody
