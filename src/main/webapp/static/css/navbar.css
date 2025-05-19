@@ -1,0 +1,201 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Sidebar container */
+.sidebar {
+    width: 230px;
+    height: 100vh;
+    background-color: #9b9b9b3d;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s;
+}
+
+/* Dark mode for sidebar */
+.sidebar.dark-mode {
+    background-color: #2a2a3c;
+    color: #ffffff;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 30px;
+}
+
+.sidebar.dark-mode .logo {
+    color: #a29bfe;
+}
+
+/* Search bar */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 8px 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar.dark-mode .search-bar {
+    background-color: #3b3b4f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.search-bar i {
+    color: #999;
+    margin-right: 10px;
+}
+
+.sidebar.dark-mode .search-bar i {
+    color: #ccc;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+    font-size: 14px;
+    color: #333;
+}
+
+.sidebar.dark-mode .search-bar input {
+    color: #ccc;
+}
+
+.search-bar input::placeholder {
+    color: #999;
+}
+
+.sidebar.dark-mode .search-bar input::placeholder {
+    color: #ccc;
+}
+
+/* Menu items */
+.menu {
+    flex-grow: 1;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: #666;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.sidebar.dark-mode .menu-item {
+    color: #ccc;
+}
+
+.menu-item i {
+    margin-right: 15px;
+    font-size: 18px;
+}
+
+.menu-item:hover {
+    background-color: #e8ecef;
+    color: #333;
+}
+
+.sidebar.dark-mode .menu-item:hover {
+    background-color: #3b3b4f;
+    color: #fff;
+}
+
+.menu-item.active {
+    background-color: #6c5ce7;
+    color: #ffffff;
+}
+
+.sidebar.dark-mode .menu-item.active {
+    background-color: #a29bfe;
+}
+
+/* Dark mode toggle */
+.dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 15px;
+    font-size: 16px;
+    color: #666;
+}
+
+.sidebar.dark-mode .dark-mode-toggle {
+    color: #ccc;
+}
+
+.dark-mode-toggle i {
+    margin-right: 15px;
+}
+
+/* Toggle switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #6c5ce7;
+}
+
+.sidebar.dark-mode input:checked + .slider {
+    background-color: #a29bfe;
+}
+
+input:checked + .slider:before {
+    transform: translateX(20px);
+}

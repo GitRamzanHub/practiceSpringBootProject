@@ -18,11 +18,5 @@ public class HomeController {
 	@Autowired
 	private EmployeeService empService;
 	
-	
-	@GetMapping("/login")
-	public String getHomePage() {
-		return "login";
-	}
-	
 
 }

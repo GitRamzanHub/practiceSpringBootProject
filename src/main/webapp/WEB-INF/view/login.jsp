@@ -20,8 +20,7 @@
 	        <div class="card login-card">
 	            <div class="card-body">
 	                <h5 class="login-title">Login</h5>
-	                <form action="${pageContext.request.contextPath}/login" method="post">
-	                	
+	                <!-- <form action="${pageContext.request.contextPath}/login" method="post"> -->
 	                	<!-- Username -->
 	                	<div class="mb-3">
 	                       <!-- <label for="username" class="form-label" style="font-size: 14px;">Username</label>
@@ -52,9 +51,9 @@
 			            	<a href="${pageContext.request.contextPath}/forgotPassword">Forgot Password</a>
 			            </div>
 	                    <div class="d-grid gap-2">
-	                        <button type="submit" class="custom-btn btn-primary">Login</button>
+	                        <button type="submit" class="custom-btn btn-primary" onclick="submitLoginDetails()">Login</button>
 	                    </div>
-	                </form>
+	               <!-- </form> -->
 	                 <div class="form-label mt-3 " style="font-size: 12px; text-align: right;" >
 		            	<a href="${pageContext.request.contextPath}/addEmployee">New user? Register</a>
 		            </div>
@@ -81,6 +80,28 @@
 		      eyeIcon.classList.toggle('fa-eye');
 		      eyeIcon.classList.toggle('fa-eye-slash');
 		    });
+		    
+		    function submitLoginDetails(){
+		    	
+		    	let username = $('#username').val() || '';
+		    	let password = $('#password').val() || '';
+		    	
+		    	$.ajax({
+		    		url: "${pageContext.request.contextPath}/loginDetails",
+		    		type: "POST",
+		    		data:{
+		    			username: username,
+		    			password: password
+		    		},
+		    		success: function(resp){
+		    			console.log("Success: "+resp);
+		    			window.location.replace("${pageContext.request.contextPath}/home");
+		    		},
+		    		error: function(resp){
+		    			console.log("Error: "+resp);
+		    		}
+		    	});
+		    }
 	    </script>
 	    
 	
