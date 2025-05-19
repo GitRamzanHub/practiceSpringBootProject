@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+ * {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars */
+}
+
+.login-card {
+    width: 25rem;
+    padding: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-title {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    border-radius: 5px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-login {
+    background-color: #4facfe;
+    border-color: #4facfe;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-login:hover {
+    background-color: #00f2fe;
+    border-color: #00f2fe;
+}
+
+/* Registration Page Background */
+
+.reg-background {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background-image: url("/static/images/3022.jpg"); 
+    background-size: cover;       
+    background-repeat: no-repeat; 
+    background-position: center; 
+}
+.reg-background::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 255, 0.3); /* Semi-transparent blue */
+    z-index: 1;
+}
+
+.reg-background > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* floating labels css */
+:root {
+  --pad: 6px;
+  --font-size: 13px;
+  --field-height: 33px;
+}
+
+input::placeholder {
+	opacity: 0;
+}
+/* Floating label wrapper */
+.form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+
+label {
+  position: absolute;
+  left: var(--pad);
+  top: 6px;
+  font-size: var(--font-size);
+  background: white;
+  padding: 0 4px;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label,
+select:focus + label,
+select:valid + label {
+  transform: translateY(-14px) scale(0.85);
+  color: #007bff;
+}
+
+input, select {
+  height: var(--field-height);
+  padding: 4px var(--pad);
+  font-size: var(--font-size);
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #4facfe;
+  border-radius: 2px;
+  background-color: white;
+}
+input:focus{
+	outline: none;
+}
+select:focus{
+	outline: none;
+}
+label {
+  position: absolute;
+  left: var(--pad);
+  top: var(--pad);
+  pointer-events: none;
+  background-color: white; /* Match your form background */
+  padding: 0 4px; 
+  transition: 0.2s ease all;
+}
+
+select:required:invalid {
+  color: gray;
+}
+
+select {
+  padding: var(--pad);
+  font-size: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #4facfe;
+  background-color: white;
+}
+
+select + label {
+  position: absolute;
+  left: var(--pad);
+  top: var(--pad);
+  pointer-events: none;
+  background-color: white;
+  padding: 0 4px;
+  transition: 0.2s ease all;
+}
+
+select:focus + label,
+select:valid + label {
+  transform: translateY(calc(-100% - 2px)) scale(0.8);
+  color: var(--blue);
+  outline: none;
+}
+
+/* Custom Buttons CSS */
+
+.custom-btn {
+      /* display: inline-block; */
+    font-weight: 300;
+    color: #fff;
+    background-color: #0d6efd;
+    border: 1px solid #0d6efd;
+    padding: 2px 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+
+.custom-btn:hover {
+  background-color: #007bff;
+    border-color: #007bff;
+}
+
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+/* password reset block css */
+#passwordResetContainer {
+    transition: all 0.4s ease;
+}
+
+/* eye icon css */
+
+#eyeIcon, #newPassEyeIcon, #confirmedPassEyeIcon{
+	font-size: 13px;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #4facfe;
+    position: absolute;
+    top:50%;
+    right: 5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+
