@@ -95,7 +95,6 @@ public class ForgotPasswordController {
 		}
 		
 		return result;
-		
 	}
 
 }

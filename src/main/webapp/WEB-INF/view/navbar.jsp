@@ -10,49 +10,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="sidebar">
-        <!-- Logo -->
-        <div class="logo">VG Info</div>
-
-        <!-- Search Bar -->
-        <!-- <div class="search-bar">
+	<div class="sidebar">
+		<!-- Logo for website -->
+		<div class="logo"> VG Info</div>
+		
+		<!-- searchbar if need -->
+		<!-- <div class="search-bar">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Search...">
         </div> -->
-
-        <!-- Menu Items -->
-        <div class="menu">
-            <div class="menu-item active">
-                <i class="fas fa-home"></i>
-                Home
+		
+		<!-- Menu of sidebar -->
+		<div class="menu">
+			<div class="menu-item active">
+				<i class="fas fa-home"></i>
+				Home
+			</div>
+			
+			<div class="menu-item">
+				<i class="fas fa-envelope"></i>
+				Send Email
+			</div>
+			
+			<div class="menu-item">
+				<i class="fas fa-file-excel"></i> 
+				Download Excel
+			</div>
+			
+			<div class="menu-item">
+                <a href="/addEmployee" style="text-decoration: none; color: #666;" >
+	            	<i class="fas fa-user"></i>
+	            	Add Employee
+	            </a>
             </div>
-            <div class="menu-item">
-                <i class="fas fa-chart-bar"></i>
-                Send Email
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-bell"></i>
-                Download Excel
-            </div>
-            <div class="menu-item">
-                <i class="fas fa-chart-line"></i>
-                Test 1
-            </div>
-            <div class="menu-item">
+          
+          	<div class="menu-item">
                 <i class="fas fa-heart"></i>
                 Test 2
             </div>
+            
             <div class="menu-item">
-                <i class="fas fa-wallet"></i>
-                Test 3
+                <i class="fas fa-user"></i>
+                Revive User
             </div>
+            
             <div class="menu-item">
-                <i class="fas fa-sign-out-alt"></i>
-                Logout
+                <a href="/logout" style="text-decoration: none; color: #666;" >
+	            	<i class="fas fa-sign-out-alt"></i>
+	            	Logout
+	            </a>
             </div>
-        </div>
-
-        <!-- Dark Mode Toggle -->
+            
+		</div>
+		
+		 <!-- Dark Mode Toggle -->
        <!-- <div class="dark-mode-toggle">
             <span><i class="fas fa-moon"></i> Dark Mode</span>
             <label class="switch">
@@ -60,11 +71,12 @@
                 <span class="slider"></span>
             </label>
         </div> -->
-    </div>
-
-    <script>
+		
+	</div>
+	
+	<script>
         // Dark Mode Toggle Functionality
-        const toggle = document.getElementById('darkModeToggle');
+        /* const toggle = document.getElementById('darkModeToggle');
         const sidebar = document.querySelector('.sidebar');
 
         toggle.addEventListener('change', function() {
@@ -81,7 +93,8 @@
         if (localStorage.getItem('darkMode') === 'enabled') {
             toggle.checked = true;
             sidebar.classList.add('dark-mode');
-        }
+        } */
     </script>
+
 </body>
 </html>

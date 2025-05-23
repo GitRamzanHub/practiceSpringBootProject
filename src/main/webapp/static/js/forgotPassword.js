@@ -1,11 +1,14 @@
 let receivedOTP = '';
 
 function sendOTP(){
+	  
 	  const email = $('#email').val();
 	  if(!email){
 		  showAlert('error','Please enter valid email address!');
 		  return;
 	  }
+	  
+	  $('#submitBtn').attr('disabled',true);
 	  
 	  $.ajax({
         url: '/sendOTP',
@@ -16,9 +19,9 @@ function sendOTP(){
         	if(resp != 'Error'){
         		console.log("OTP Received:: "+resp);
 	        	receivedOTP = resp;
-	        	
 	           // 1. displaying the status message otp sent to your email address
-	           $('#statusMessage').text('OTP has been sent to your email').show();
+			   showAlert('success', 'OTP has been sent to your email');
+	           // $('#statusMessage').text('OTP has been sent to your email').show();
 	           
 	           // message after 3 sec
 	           setTimeout(function(){
@@ -27,54 +30,19 @@ function sendOTP(){
 	           
 	           // 2. Show OTP input boxes
 	           displayOTPEnterBox();
-			  
-			  // 3. if otp verify disply the password & confirmed password field
-			  
-			  // 4. displying password weak to short feature
         	}
+			
+			$('#submitBtn').removeAttr('disabled');
         	
         },
         error: function(xhr, status, error) {
             showAlert('error', 'Failed to send OTP, try again!');
+			$('#submitBtn').removeAttr('disabled');
         }
     });
 	  
   }
-  
-  function showAlert(type, message) {
-	    const alertBox = document.getElementById('customAlert');
-	    const title = document.getElementById('alertTitle');
-	    const messageEl = document.getElementById('alertMessage');
-	
-	    // Clear previous styles
-	    alertBox.querySelector('.alert-content').classList.remove('alert-success', 'alert-error', 'alert-warning');
-	
-	    switch(type.toLowerCase()) {
-	      case 'success':
-	        title.innerText = "Success";
-	        alertBox.querySelector('.alert-content').classList.add('alert-success');
-	        break;
-	      case 'error':
-	        title.innerText = "Error";
-	        alertBox.querySelector('.alert-content').classList.add('alert-error');
-	        break;
-	      case 'warning':
-	        title.innerText = "Warning";
-	        alertBox.querySelector('.alert-content').classList.add('alert-warning');
-	        break;
-	      default:
-	        title.innerText = "Alert";
-	    }
-	
-	    messageEl.innerText = message;
-	    alertBox.classList.remove('hidden');
-  }
-  
-  function closeAlert() {
-    document.getElementById('customAlert').classList.add('hidden');
-  }
-  
- 
+
  function displayOTPEnterBox() {
     if ($('#otpContainer').length === 0) {
         const otpContainer = $('<div id="otpContainer" class="mb-3" style="text-align: center;"></div>');
@@ -82,7 +50,10 @@ function sendOTP(){
             const otpInput = $('<input type="text" maxlength="1" class="otp-box" id="otp' + i + '" style="margin: 0 4px; width: 35px; text-align: center;">');
             otpContainer.append(otpInput);
         }
-        $('.custom-btn').closest('.text-center').before(otpContainer);
+        /*$('.custom-btn').closest('.text-center').before(otpContainer);
+        $('#otp0').focus();*/
+		
+		$('.form-group').closest('.mb-3').after(otpContainer);
         $('#otp0').focus();
     }
  }
@@ -202,22 +173,30 @@ function forgotPassword(){
 	  }
 	  
 	  // Ajax call with email & newPassword
-	  $.ajax({
-		  url: '/resetPassword',
-		  type: 'POST',
-		  data:{
-			  email: userEmail,
-			  newPassword: newPassword
-		  },
-		  success: function(resp){
-		  	  console.log("resp :: ", resp);
-		  	  $('#statusMessage').text(resp).show();
-		  	  
-		  },
-		  error: function(error){						  
-			  $('#statusMessage').text(error).css('color', 'green').show();
-		  }
-	  });
+	  $('#changePasswordBtn').prop('disabled', true); // Disable button during AJAX
+
+	      $.ajax({
+	          url: '/resetPassword',
+	          type: 'POST',
+	          data: {
+	              email: userEmail,
+	              newPassword: newPassword
+	          },
+	          success: function(resp) {
+	              console.log("resp :: ", resp);
+	              // Show success alert with redirect callback
+	              showAlert('success', resp.message || 'Password reset successfully!', function() {
+	                  window.location.href = '/login';
+	              });
+	              $('#changePasswordBtn').prop('disabled', false); // Re-enable button
+	          },
+	          error: function(error) {
+	              const errorMessage = error.responseJSON?.message || 'Failed to reset password.';
+	              $('#statusMessage').text(errorMessage).css('color', 'red').show();
+	              showAlert('error', errorMessage);
+	              $('#changePasswordBtn').prop('disabled', false); // Re-enable button
+	          }
+	      });
 	  
   }
   

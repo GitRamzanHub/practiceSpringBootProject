@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
@@ -36,6 +37,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 		
 		emp = empRepo.findByUsername(username);
 		return emp;
+	}
+
+	@Override
+	public Optional<Employee> findByUsernameAndPassword(String username, String password) {
+		Optional<Employee> employee = empRepo.findByUsernameAndPassword(username, password);
+		return employee;
+	}
+
+	@Override
+	public Employee findById(int empId) {
+		Optional<Employee> emp = empRepo.findById(empId);
+		if(emp.isPresent()) {
+			return emp.get();
+		}else {
+			return new Employee();
+		}
+		
 	}
 
 }

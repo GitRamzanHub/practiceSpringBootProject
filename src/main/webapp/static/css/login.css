@@ -1,0 +1,193 @@
+@charset "UTF-8";
+
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap'); */
+
+/* {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+}*/
+
+html, body {
+	
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/static/font/OpenSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Left Side: Login Card Container */
+.login-left {
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Right Side: Background Image */
+.login-right {
+    background-image: url('/static/images/3022.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+/* Login Card */
+.login-card {
+    width: 25rem;
+    padding: 1rem;
+    border-radius: 2px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.15);
+    background-color: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.login-title {
+    color: black;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size:30px;
+}
+
+/* Floating Labels */
+:root {
+    --pad: 6px;
+    --font-size: 13px;
+    --field-height: 40px; /* Increased from 33px */
+}
+
+input::placeholder {
+    opacity: 0;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+label {
+    position: absolute;
+    left: var(--pad);
+    top: 10px; /* Adjusted from 6px to center in 40px height */
+    font-size: var(--font-size);
+    background: white;
+    padding: 0 4px;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+    transform: translateY(-18px) scale(0.85); /* Adjusted from -14px for taller input */
+    color: #007bff;
+}
+
+input {
+    height: var(--field-height);
+    padding: 8px var(--pad); /* Increased padding from 4px for better spacing */
+    font-size: var(--font-size);
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #4facfe;
+    border-radius: 2px;
+    background-color: white;
+}
+
+input:focus {
+    outline: none;
+}
+
+/* Custom Buttons */
+.custom-btn {
+    font-weight: 300;
+    color: #fff;
+    height: 35px;
+    border-radius: 5px;
+}
+
+.custom-btn:hover {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-gradiant-primary {
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+    border: none;
+}
+
+.btn-gradiant-primary:hover {
+    background: linear-gradient(90deg, #00f2fe 0%, #4facfe 100%);
+}
+
+/* Eye Icon */
+#eyeIcon, #maiIcon {
+    font-size: 13px;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #4facfe;
+}
+
+/* Responsive Design */
+@media (max-width: 767.98px) {
+    .login-left {
+        height: auto;
+        padding: 2rem 1rem;
+    }
+    .login-right {
+        display: none !important;
+    }
+    .login-card {
+        width: 100%;
+        max-width: 20rem;
+    }
+}
+
+.icon-container {
+  width: 100px; /* Custom width */
+  height: 100px; /* Custom height */
+  display: flex; /* Ensures proper centering if needed */
+  justify-content: center; /* Centers image horizontally */
+  align-items: center; /* Centers image vertically */
+  overflow: hidden; /* Hides any overflow if image exceeds container */
+}
+
+.icon-container img {
+  width: 100%; /* Makes image fill the container width */
+  height: 100%; /* Makes image fill the container height */
+  object-fit: contain; /* Ensures the image scales to fit without distortion */
+}
+
+.footer-image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Spans the full width of the login-right div */
+  height: 100px; /* Custom height for the footer image */
+  object-fit: cover; /* Ensures the image covers the area, cropping if needed */
+  display: block;
+}
+
+#newPassEyeIcon, #confirmedPassEyeIcon{
+	font-size: 13px;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #4facfe;
+    position: absolute;
+    top:50%;
+    right: 5%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}

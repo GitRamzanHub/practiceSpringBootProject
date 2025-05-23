@@ -40,6 +40,16 @@ public class Employee {
 	}
 
 
+	public char getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(char status) {
+		this.status = status;
+	}
+
+
 	public String getUsername() {
 		return username;
 	}

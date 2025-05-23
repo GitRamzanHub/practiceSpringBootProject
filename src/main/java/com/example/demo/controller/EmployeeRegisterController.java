@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,15 +20,11 @@ public class EmployeeRegisterController {
 	private EmployeeService empService;
 	
 	@GetMapping("/addEmployee")
-	public String addEmployee() {
+	public String addEmployee(Model model) {
+		model.addAttribute("isEdit", false);
 		return "addUser";
 	}
 	
-	/*Working on practice project designed the forgot password screen with sending otp to the user email & after verify the otp user will allow to change the password. will continue to complete this project & may plan to add new feature which might be used in any of the client requirement.
-	 * 
-	 * 
-	 * 
-	 */
 	@PostMapping("/addEmployee")
 	@ResponseBody
 	public ResponseEntity<Employee> addEmployee(@RequestBody Employee emp){
